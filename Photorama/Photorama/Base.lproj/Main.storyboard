@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Photorama-->
@@ -18,27 +17,102 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JjE-yv-hRi">
-                                <rect key="frame" x="16" y="64" width="343" height="603"/>
-                            </imageView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Kyk-67-ZcC">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="2" id="SxP-Q3-HW9">
+                                    <size key="itemSize" width="90" height="90"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="2" minY="2" maxX="2" maxY="2"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UICollectionViewCell" id="gjl-ch-C5j" customClass="PhotoCollectionViewCell" customModule="Photorama" customModuleProvider="target">
+                                        <rect key="frame" x="2" y="66" width="90" height="90"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9hc-E6-THo">
+                                                    <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+                                                </imageView>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Unp-kB-9jj">
+                                                    <rect key="frame" x="35" y="35" width="20" height="20"/>
+                                                </activityIndicatorView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="9hc-E6-THo" firstAttribute="centerX" secondItem="gjl-ch-C5j" secondAttribute="centerX" id="0Vd-Gu-cei"/>
+                                            <constraint firstItem="9hc-E6-THo" firstAttribute="leading" secondItem="gjl-ch-C5j" secondAttribute="leading" id="9HC-r4-T7Y"/>
+                                            <constraint firstItem="Unp-kB-9jj" firstAttribute="centerY" secondItem="gjl-ch-C5j" secondAttribute="centerY" id="CEz-Ny-nE0"/>
+                                            <constraint firstItem="Unp-kB-9jj" firstAttribute="centerX" secondItem="gjl-ch-C5j" secondAttribute="centerX" id="R31-cx-u6r"/>
+                                            <constraint firstAttribute="bottom" secondItem="9hc-E6-THo" secondAttribute="bottom" id="TBu-6q-7Ku"/>
+                                            <constraint firstItem="9hc-E6-THo" firstAttribute="centerY" secondItem="gjl-ch-C5j" secondAttribute="centerY" id="YbA-qY-hxw"/>
+                                            <constraint firstAttribute="trailing" secondItem="9hc-E6-THo" secondAttribute="trailing" id="mPX-ar-hOm"/>
+                                            <constraint firstItem="9hc-E6-THo" firstAttribute="top" secondItem="gjl-ch-C5j" secondAttribute="top" id="sIE-am-kav"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="imageView" destination="9hc-E6-THo" id="MOT-Vz-DpX"/>
+                                            <outlet property="spinner" destination="Unp-kB-9jj" id="PSS-8L-fjs"/>
+                                            <segue destination="8J8-R1-Byz" kind="show" identifier="ShowPhoto" id="md7-n7-Fqd"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="JjE-yv-hRi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="QzI-21-GYC"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="JjE-yv-hRi" secondAttribute="trailing" id="V3c-4W-oPs"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="JjE-yv-hRi" secondAttribute="bottom" id="pqb-iR-25W"/>
-                            <constraint firstItem="JjE-yv-hRi" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="roI-Wb-zbU"/>
+                            <constraint firstItem="Kyk-67-ZcC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="WIa-4m-Jaq"/>
+                            <constraint firstAttribute="trailing" secondItem="Kyk-67-ZcC" secondAttribute="trailing" id="g6K-o6-TT3"/>
+                            <constraint firstItem="Kyk-67-ZcC" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="mZW-nl-WL9"/>
+                            <constraint firstAttribute="bottom" secondItem="Kyk-67-ZcC" secondAttribute="bottom" id="w8V-R2-iOh"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Photorama" id="MrS-H7-t6M"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="imageView" destination="JjE-yv-hRi" id="Tcm-XR-yXe"/>
+                        <outlet property="collectionView" destination="Kyk-67-ZcC" id="ng7-fu-Zpb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="914.5" y="1170.5"/>
+        </scene>
+        <!--Photo Info View Controller-->
+        <scene sceneID="hxY-8e-7cd">
+            <objects>
+                <viewController id="8J8-R1-Byz" customClass="PhotoInfoViewController" customModule="Photorama" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eJX-Ww-U9K"/>
+                        <viewControllerLayoutGuide type="bottom" id="3xl-4n-wJ2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="t7C-jN-YZj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pxa-aD-M10">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="pxa-aD-M10" secondAttribute="bottom" id="cSZ-if-E3e"/>
+                            <constraint firstAttribute="trailing" secondItem="pxa-aD-M10" secondAttribute="trailing" id="hvE-al-jhX"/>
+                            <constraint firstItem="pxa-aD-M10" firstAttribute="leading" secondItem="t7C-jN-YZj" secondAttribute="leading" id="pMP-wQ-0xE"/>
+                            <constraint firstItem="pxa-aD-M10" firstAttribute="top" secondItem="t7C-jN-YZj" secondAttribute="top" id="wmi-N1-itO"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="imageView" destination="pxa-aD-M10" id="e6t-33-0wk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wKC-XM-Lwy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1394.5" y="1170.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QiB-4q-79t">
